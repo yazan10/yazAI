@@ -31,6 +31,10 @@
       body {
         background-color: #0f172a;
         color: #f8fafc;
+        /* Prevent text selection */
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
       }
       /* Custom Scrollbar */
       ::-webkit-scrollbar {
@@ -58,7 +62,49 @@
       .markdown-body h1, .markdown-body h2, .markdown-body h3 { font-weight: 700; margin-top: 1rem; margin-bottom: 0.5rem; }
       .markdown-body h1 { font-size: 1.5em; }
       .markdown-body h2 { font-size: 1.25em; }
+      
+      /* Re-enable selection for code blocks and specific content if needed */
+      .markdown-body pre, .markdown-body code {
+        user-select: text;
+        -webkit-user-select: text;
+      }
     </style>
+    
+    <!-- Security Script -->
+    <script>
+      // Disable Right Click
+      document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+      // Disable Keyboard Shortcuts for DevTools
+      document.addEventListener('keydown', (e) => {
+        // F12
+        if (e.key === 'F12') {
+          e.preventDefault();
+        }
+        // Ctrl+Shift+I (Inspect)
+        if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+          e.preventDefault();
+        }
+        // Ctrl+Shift+J (Console)
+        if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+          e.preventDefault();
+        }
+        // Ctrl+U (View Source)
+        if (e.ctrlKey && e.key === 'u') {
+          e.preventDefault();
+        }
+        // Ctrl+S (Save)
+        if (e.ctrlKey && e.key === 's') {
+          e.preventDefault();
+        }
+      });
+
+      // Simple Anti-Debugger (loops execution if devtools is open)
+      setInterval(() => {
+        (function(){})['constructor']('debugger')();
+      }, 1000);
+    </script>
+
   <script type="importmap">
 {
   "imports": {

@@ -8,7 +8,7 @@ export const MODELS: AIModel[] = [
     description: 'نموذج متخصص في البرمجة والمنطق المعقد',
     icon: 'Brain',
     type: 'text',
-    baseModel: 'gemini-3-flash-preview' // Switched from pro to flash to fix Quota Exceeded errors
+    baseModel: 'gemini-3-flash-preview'
   },
   {
     id: 'gemini',

@@ -2,9 +2,9 @@ import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 import { MODELS, SYSTEM_PROMPTS } from '../constants';
 import { ModelId } from '../types';
 
-// Helper to get client - always create new instance to pick up latest key
+// Helper to get client - using the provided general key
 const getClient = () => {
-  return new GoogleGenAI({ apiKey: process.env.API_KEY });
+  return new GoogleGenAI({ apiKey: 'AIzaSyB0pBsfmBhWtGrVu_NkzUnRhmOqsfNbVXI' });
 };
 
 const handleApiError = (error: any) => {
